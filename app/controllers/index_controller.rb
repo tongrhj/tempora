@@ -1,10 +1,12 @@
 class IndexController < ApplicationController
   def index
-    # client = Twitter::Streaming::Client.new do |config|
-    #   config.consumer_key        = ENV["twitter_consumer_key"]
-    #   config.consumer_secret     = ENV["twitter_consumer_secret"]
-    #   config.access_token        = ENV["twitter_access_token"]
-    #   config.access_token_secret = ENV["twitter_access_token_secret"]
-    # end
+  end
+
+  def show_tweets
+    @search_campaign_id = params[:campaign_id].to_i
+    @campaign = sample_data.find { |cmp|
+      cmp[:campaign_id] == @search_campaign_id
+    }
+    load_tweets(@campaign[:campaign_name])
   end
 end

@@ -1,0 +1,21 @@
+<%= render partial: 'header' %>
+
+<h3>
+  Showing tweets for: Campaign
+  <b><%= @search_campaign_id %></b>,
+  <b><%= @campaign[:campaign_name] %></b>
+</h3>
+
+<% if @search_term %>
+  <% if @tweets %>
+    <% @tweets.each do |tweet| %>
+      <div style="padding: 20px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #CACFD2;">
+        <%= tweet %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No tweets found.</p>
+  <% end %>
+<% else %>
+  <p>Error with campaign_id</p>
+<% end %>
